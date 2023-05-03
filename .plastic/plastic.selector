@@ -1,0 +1,4 @@
+repository "arfoundation-samples-main@blueins@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
