@@ -1488,7 +1488,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1185833718}
   - component: {fileID: 1185833719}
-  - component: {fileID: 1185833720}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1526,26 +1525,6 @@ MonoBehaviour:
   xrOrigin: {fileID: 1233518442}
   MetaEnvironmentPrefab: {fileID: 7576867131100388943, guid: 5edbfa06713180b48b2ffa546b845d63,
     type: 3}
---- !u!114 &1185833720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185833717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e57bac021ea8443aa5093a9b57cceab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iBeaconItemPrefab: {fileID: 156326, guid: feac070dc11574615bcd8d76f60a5004, type: 3}
-  distance_test:
-  - 1
-  - 2
-  - 3
-  Coord_x: 0
-  Coord_y: 0
-  Coord_z: 0
 --- !u!1 &1233518437
 GameObject:
   m_ObjectHideFlags: 0

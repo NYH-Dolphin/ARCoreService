@@ -20,7 +20,7 @@ public class LocationTrackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // EnvironmentUpdate(new Vector3(2,0,0), new Vector3(0,0,0), new Vector3(0,0,-5));
+        EnvironmentUpdate(new Vector3(2,0,0), new Vector3(0,0,0), new Vector3(0,0,-5));
     }
 
 
