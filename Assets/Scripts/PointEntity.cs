@@ -37,7 +37,7 @@ public class PointEntity : MonoBehaviour {
                 //Debug.Log("开始拖拽了");
                 Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPosition.z);
                 Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenSpace) + offset;
-                gameObject.transform.position = currentPosition;
+                gameObject.transform.parent.transform.position = currentPosition;
             }
         }
         if(Input.GetKeyUp(KeyCode.Mouse0))
