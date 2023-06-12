@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
@@ -8,11 +5,11 @@ using Vector3 = UnityEngine.Vector3;
 public class LocationTrackManager : MonoBehaviour
 {
     public XROrigin xrOrigin;
-    
+
     // the corresponding environment (meta)
     public GameObject MetaEnvironmentPrefab;
     private GameObject MetaEnvironment;
-    
+
     private float WIDTH;
     private float HEIGHT;
 
@@ -20,7 +17,7 @@ public class LocationTrackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EnvironmentUpdate(new Vector3(2,0,0), new Vector3(0,0,0), new Vector3(0,0,-5));
+        EnvironmentUpdate(new Vector3(2, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, -5));
     }
 
 
@@ -30,8 +27,6 @@ public class LocationTrackManager : MonoBehaviour
     }
 
 
-    
-    
     /**
      * Beacons' Position Settlement
      *         width
@@ -68,11 +63,11 @@ public class LocationTrackManager : MonoBehaviour
     }
 
     /// <summary>
-      /// Set the correct position of the meta environment
-      /// </summary>
-      /// <param name="originalPos"></param> Require the iBeacon B's position
-      /// <param name="dir"></param> Require the direction vector of CB
-      void OnSetPosition(Vector3 originalPos, Vector3 dir)
+    /// Set the correct position of the meta environment
+    /// </summary>
+    /// <param name="originalPos"></param> Require the iBeacon B's position
+    /// <param name="dir"></param> Require the direction vector of CB
+    void OnSetPosition(Vector3 originalPos, Vector3 dir)
     {
         // Set Original Position
         Vector3 offset = new Vector3(HEIGHT / 2, -xrOrigin.CameraYOffset, -WIDTH / 2);

@@ -5,9 +5,17 @@ public class ARAnchorManager : MonoBehaviour
 {
     public static ARAnchorManager Instance { get; private set; }
     public GameObject realEnvironmentPrefab;
+    private GameObject _metaEnvironment;
 
-    
-    ARTrackedImageManager m_TrackedImageManager;
+    // the environment attribute
+    public float WIDTH = 5;
+    public float HEIGHT = 3;
+
+    // the new origin position -> used as reference
+    public static Vector3 OriginPosition;
+
+    ARTrackedImageManager _mTrackedImageManager;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -19,18 +27,19 @@ public class ARAnchorManager : MonoBehaviour
             Instance = this;
         }
 
-        m_TrackedImageManager = GetComponent<ARTrackedImageManager>();
+        _mTrackedImageManager = GetComponent<ARTrackedImageManager>();
+        InitializeEnvironment();
     }
 
 
     void OnEnable()
     {
-        m_TrackedImageManager.trackedImagesChanged += OnDetectMarker;
+        _mTrackedImageManager.trackedImagesChanged += OnDetectMarker;
     }
 
     void OnDisable()
     {
-        m_TrackedImageManager.trackedImagesChanged -= OnDetectMarker;
+        _mTrackedImageManager.trackedImagesChanged -= OnDetectMarker;
     }
 
     void OnDetectMarker(ARTrackedImagesChangedEventArgs eventArgs)
@@ -46,11 +55,22 @@ public class ARAnchorManager : MonoBehaviour
         }
     }
 
+
+    void InitializeEnvironment()
+    {
+        _metaEnvironment = Instantiate(realEnvironmentPrefab);
+        _metaEnvironment.transform.localScale = new Vector3(HEIGHT, 1f, WIDTH);
+        _metaEnvironment.SetActive(false);
+    }
+
     void SetAnchor(ARTrackedImage trackedImage)
     {
-        GameObject realEnvironment = Instantiate(realEnvironmentPrefab);
-        realEnvironment.transform.position = trackedImage.gameObject.transform.position;
-        
+        Debug.Log("add a new anchor");
+        Vector3 offset = new Vector3(HEIGHT / 2, 0, WIDTH / 2);
+        OriginPosition = trackedImage.gameObject.transform.position;
+        Vector3 envPosition = OriginPosition + offset;
+        _metaEnvironment.transform.position = envPosition;
+        _metaEnvironment.SetActive(true);
     }
 
     // Start is called before the first frame update
