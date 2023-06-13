@@ -44,6 +44,22 @@ public class ControlCam : MonoBehaviour
         this.isCanControl = !this.isCanControl;
     }
 
+    public void addMovable(GameObject tar)
+    {
+        this.movableItems.Add(tar);
+    }
+
+    public void onClick()
+    {
+        foreach(var i in this.movableItems)
+        {
+            setActiveAxis tmp = i.GetComponent<setActiveAxis>();
+            tmp.onClick();
+        }
+    }
+
+    public List<GameObject> movableItems = new List<GameObject>();
+
     // Update is called once per frame
     void Update()
     {

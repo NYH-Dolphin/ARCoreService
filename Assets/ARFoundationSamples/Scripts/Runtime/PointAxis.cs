@@ -28,7 +28,7 @@ public class PointAxis : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        parentTransform = transform.parent;
+        parentTransform = transform.parent.parent;
         mr = GetComponent<MeshRenderer>();
         switch (curPAType)
         {

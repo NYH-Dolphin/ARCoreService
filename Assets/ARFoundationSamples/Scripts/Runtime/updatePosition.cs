@@ -20,6 +20,6 @@ public class updatePosition : MonoBehaviour
     void Update()
     {
         
-        posTarget.position = posOrigin.position;
+        //posTarget.position = posOrigin.position;
     }
 }
