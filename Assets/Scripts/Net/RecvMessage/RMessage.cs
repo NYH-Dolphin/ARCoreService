@@ -26,6 +26,7 @@ namespace NetworkTools
                 newPrefab.position = String2Vector(data["prefabs"][i]["position"].ToString());
                 newPrefab.rotation = Quaternion.Euler(String2Vector(data["prefabs"][i]["rotation"].ToString()));
                 newPrefab.scale = String2Vector(data["prefabs"][i]["scale"].ToString());
+                newPrefab.color = int.Parse(data["prefabs"][i]["color"].ToString());
                 prefabs.Add(newPrefab);
             }
         }

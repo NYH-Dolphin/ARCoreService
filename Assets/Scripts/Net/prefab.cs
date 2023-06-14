@@ -14,7 +14,7 @@ namespace NetworkTools
         public prefab()
         {
             //todo: color
-            
+            this.color = 0;
         }
     }
 }

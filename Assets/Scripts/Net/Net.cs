@@ -3,6 +3,7 @@ using DefaultNamespace;
 using LitJson;
 using NetworkTools;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation.Samples;
 
 public class Net : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class Net : MonoBehaviour
 
     public IEnumerator SendGetRequest()
     {
-        SMessage smsg = new SMessage("GET_OBJECT", "a", new Vector3(), new Vector3(), new Vector3());
+        SMessage smsg = new SMessage("GET_OBJECT", "a", new Vector3(), new Vector3(), new Vector3(), 0);
         RMessage rmsg = new RMessage();
         HttpManager httpManager = new HttpManager(rmsg, smsg);
         string uri = httpManager.GetParser(serverIp, serverPort);
@@ -50,14 +51,16 @@ public class Net : MonoBehaviour
             GameObject cube = GameObject.Find("MovableObject(Clone)");
             if (cube == null)
             {
-                cube = Instantiate(mGameObject, rmsg.prefabs[0].position, rmsg.prefabs[0].rotation);
+                Debug.Log("NULL");
+                cube = Instantiate(mGameObject, rmsg.prefabs[0].position+ARAnchorManager.OriginPosition, rmsg.prefabs[0].rotation);
             }
             else
             {
                 if (rmsg.prefabs.Count > 0)
                 {
-                    cube.transform.position = rmsg.prefabs[0].position;
-                    StartCoroutine(Move((rmsg.prefabs[0].position - cube.transform.position) / 50, cube));
+                    // cube.transform.position = rmsg.prefabs[0].position+ARAnchorManager.OriginPosition;
+                    cube.GetComponentsInChildren<ChangeColor>()[0].setColor(rmsg.prefabs[0].color);
+                    StartCoroutine(Move((rmsg.prefabs[0].position+ARAnchorManager.OriginPosition - cube.transform.position) / 50, cube));
                 }
                 else
                 {
@@ -88,7 +91,7 @@ public class Net : MonoBehaviour
         SMessage smsg = new SMessage("UPDATE_OBJECT", GetComponent<Position>().cube.name,
             GetComponent<Position>()._currentPosition,
             Quaternion.Euler(GetComponent<Position>().cube.transform.rotation.eulerAngles) * Vector3.forward,
-            GetComponent<Position>().cube.transform.localScale);
+            GetComponent<Position>().cube.transform.localScale, GetComponent<Position>().cube.GetComponentsInChildren<ChangeColor>()[0].getColor());
 
         RMessage rmsg = new RMessage();
         _httpManager = new HttpManager(rmsg, smsg);

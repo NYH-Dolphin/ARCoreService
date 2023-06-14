@@ -10,6 +10,7 @@ namespace NetworkTools
         public Vector3 position;
         public Vector3 rotation;
         public Vector3 scale;
+        public int color;
 
 
         public string Vector2str(Vector3 v)
@@ -17,13 +18,14 @@ namespace NetworkTools
             return "[" + v[0] + "," + v[1] + "," + v[2] + "]";
         }
 
-        public SMessage(string CMD, string prefabName, Vector3 position, Vector3 rotation, Vector3 scale)
+        public SMessage(string CMD, string prefabName, Vector3 position, Vector3 rotation, Vector3 scale,int color)
         {
             this.CMD = CMD;
             this.prefab_name = prefabName;
             this.position = position;
             this.rotation = rotation;
             this.scale = scale;
+            this.color = color;
         }
 
         public override string ToJsonString()
