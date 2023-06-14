@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation.Samples;
+using static UnityEngine.GraphicsBuffer;
 
 public class ControlCam : MonoBehaviour
 {
@@ -29,7 +31,7 @@ public class ControlCam : MonoBehaviour
     private Vector3 lastMousePos;
     [SerializeField]
     private Vector3 offset;
-
+    public List<GameObject> movableItems = new List<GameObject>();
     private bool isCanControl = true;
     private PointAxis PA;
     private PointEntity PE;
@@ -49,7 +51,7 @@ public class ControlCam : MonoBehaviour
         this.movableItems.Add(tar);
     }
 
-    public void onClick()
+    public void onClickMovableSwitch()
     {
         foreach(var i in this.movableItems)
         {
@@ -58,7 +60,41 @@ public class ControlCam : MonoBehaviour
         }
     }
 
-    public List<GameObject> movableItems = new List<GameObject>();
+    public void onClickChangeColor()
+    {
+        foreach (var i in this.movableItems)
+        {
+            ChangeColor[] CH = i.transform.GetComponentsInChildren<ChangeColor>(true);
+            Debug.Log("change color component: " + CH.Length);
+            ChangeColor target = CH[0];
+            target.changeColor();
+        }
+    }
+
+    public void onClickChangeColorRD()
+    {
+        foreach (var i in this.movableItems)
+        {
+            ChangeColor[] CH = i.transform.GetComponentsInChildren<ChangeColor>(true);
+            Debug.Log("change color component: " + CH.Length);
+            ChangeColor target = CH[0];
+            target.changeColorRd();
+        }
+    }
+
+    public List<GameObject> getMovableItems()
+    {
+        return this.movableItems;
+    }
+
+    public void resetMovables()
+    {
+        foreach(var i in this.movableItems)
+        {
+            Destroy(i);
+        }
+        this.movableItems.Clear();
+    }
 
     // Update is called once per frame
     void Update()
