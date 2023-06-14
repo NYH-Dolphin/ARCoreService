@@ -3276,6 +3276,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2124498301}
   - component: {fileID: 2124498300}
+  - component: {fileID: 2124498303}
+  - component: {fileID: 2124498302}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -3311,6 +3313,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2124498302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124498299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a68e6fe3f5f3842b5f2ad6b713929d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _orignPosition: {x: 0, y: 0, z: 0}
+  _currentPosition: {x: 0, y: 0, z: 0}
+  cube: {fileID: 0}
+--- !u!114 &2124498303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124498299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe5cc0fb8bbe2848a909d698dc1e58a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverIp: 127.0.0.1
+  serverPort: 9999
+  subCatalogue: []
+  mGameObject: {fileID: 8182563193917223794, guid: 9b5c204170437a146b83c6d31a8c9fb3,
+    type: 3}
 --- !u!1001 &3811591508619061747
 PrefabInstance:
   m_ObjectHideFlags: 0
