@@ -18,7 +18,7 @@ namespace NetworkTools
             return "[" + v[0] + "," + v[1] + "," + v[2] + "]";
         }
 
-        public SMessage(string CMD, string prefabName, Vector3 position, Vector3 rotation, Vector3 scale,int color)
+        public SMessage(string CMD, string prefabName, Vector3 position, Vector3 rotation, Vector3 scale, int color)
         {
             this.CMD = CMD;
             this.prefab_name = prefabName;
@@ -31,7 +31,7 @@ namespace NetworkTools
         public override string ToJsonString()
         {
             return
-                $"CMD={CMD}&prefab_name={prefab_name}&position={Vector2str(position)}&rotation={Vector2str(rotation)}&scale={Vector2str(scale)}";
+                $"CMD={CMD}&prefab_name={prefab_name}&position={Vector2str(position)}&rotation={Vector2str(rotation)}&scale={Vector2str(scale)}&color={color}";
         }
 
         public override WWWForm ToWWWForm()
